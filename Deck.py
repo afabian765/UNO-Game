@@ -30,14 +30,13 @@ def drawCards(numCards):
     return cardsDrawn
 
 def showHand(player, playerHand):
-    print("Player {} is currently up.".format(player + 1))
+    print("Player {} is currently up.".format(player+1))
     print("Your Hand")
     print("-------")
     y = 1
     for card in playerHand:
         print("{}) {}".format(y, card))
         y += 1
-        print(card)
     print("")
         
 def Play(color, value, playerHand):
@@ -54,12 +53,13 @@ discards = []
 print(unoDeck)
 
 players = []
-colors = ["Blue", "Red", "Yellow", "Green"]
+colors = ["Red", "Blue", "Yellow", "Green"]
 numPlayers = int(input("How many players? "))
 while numPlayers < 2 or numPlayers > 4:
     numPlayers = int(input("Not a valid number of players. Please type between 2-4 players."))
 for player in range(numPlayers):
     players.append(drawCards(7))
+print(players)
 
 playerTurn = 0
 playDirection = 1
@@ -125,10 +125,11 @@ while playing:
 else:
     print("You cant play yet. Your have to draw a card first. ")
     players[playerTurn].extend(drawCards(1))
+
         
 
 playerTurn += playDirection
-if playerTurn == numPlayers:
+if playerTurn >= numPlayers:
     playerTurn = 0
 elif playerTurn < 0:
     playerTurn = numPlayers-1
