@@ -1,4 +1,5 @@
 import random
+
 def UNOdeck():
     deck = []
     colors = ["Red", "Blue", "Yellow", "Green"]
@@ -6,20 +7,21 @@ def UNOdeck():
     wilds = ["Wild", "Wild Draw Four"]
     for color in colors:
         for value in values:
-            cardValue = "{}{}".format(color, value)
+            cardValue = "{} {}".format(color, value)
             deck.append(cardValue)
             if value != 0:
                 deck.append(cardValue)
     for i in range(4):
         deck.append(wilds[0])
         deck.append(wilds[1])
-    print(deck)
+    return deck
     
 
 def shuffleDeck(deck):
     for cardPos in range(len(deck)):
-        randPos = random.radint(0, 107)
+        randPos = random.randint(0, 107)
         deck[cardPos], deck[randPos] = deck[randPos], deck[cardPos]
+    return deck
 
 def drawCards(numCards):
     cardsDrawn = []
@@ -28,7 +30,7 @@ def drawCards(numCards):
     return cardsDrawn
 
 def showHand(player, playerHand):
-    print("Player {} is currently up.".format(player+1))
+    print("Player {} is currently up.".format(player + 1))
     print("Your Hand")
     print("-------")
     y = 1
@@ -54,11 +56,10 @@ print(unoDeck)
 players = []
 colors = ["Blue", "Red", "Yellow", "Green"]
 numPlayers = int(input("How many players? "))
-while numPlayers<2 or numPlayers>4:
+while numPlayers < 2 or numPlayers > 4:
     numPlayers = int(input("Not a valid number of players. Please type between 2-4 players."))
 for player in range(numPlayers):
-    players.append(drawCards(5))
-print(players)
+    players.append(drawCards(7))
 
 playerTurn = 0
 playDirection = 1
